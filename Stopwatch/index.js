@@ -19,7 +19,8 @@ function counterStr() {
     min = "0" + min;
   if (sec.length === 1)
     sec = "0" + sec
-
+  if (mils.length === 1)
+    mils = "0" + mils
 
   return (min + ':' + sec + ':' + mils);
 }
@@ -108,24 +109,6 @@ function showClock() {
     drawMinutes();
 
     function drawClock() {
-      // Draw outer clock face
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, handLength + 10, 0, Math.PI * 2);
-      ctx.strokeStyle = 'grey';
-      ctx.stroke();
-      // Draw inner clock face
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, handLength + 7, 0, Math.PI * 2);
-      ctx.strokeStyle = 'grey';
-      ctx.stroke();
-      // Draw centre dot
-      ctx.beginPath();
-      ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, Math.PI * 2);
-      ctx.lineWidth = 2;
-      ctx.fillStyle = 'black';
-      ctx.strokeStyle = 'black';
-      ctx.stroke();
-
       // Draw minute markers
       for (var i = 0; i < 12; i++) {
           angle = (i - 3) * (Math.PI * 2) / 12;
@@ -158,7 +141,7 @@ function showClock() {
           ctx.moveTo(x1, y1);
           ctx.lineTo(x2, y2);
 
-          ctx.strokeStyle = 'light-grey';
+          ctx.strokeStyle = 'green';
           ctx.stroke();
       }
     }
